@@ -29,6 +29,7 @@ h1 {
    margin-bottom: 10px;
    color: #4ecdc4;
    transition: all 0.5s;
+   cursor: default;
 }
 h3 {
    font-size: 1rem;
@@ -36,6 +37,7 @@ h3 {
    margin-bottom: 12px;
    border-bottom: 1px solid #333;
    padding-bottom: 5px;
+   cursor: default;
 }
 .Main-Container {                            /*Properties of main contents*/
    display: flex;
@@ -64,6 +66,7 @@ h3 {
    font-size: 40px;
    font-weight: 50px;
    margin-bottom: 30px;
+   cursor: default;
 }  
 .mode-btn {                                  /*Switch for 3x3 to 4x4 grid*/
    background: transparent;
@@ -129,6 +132,7 @@ h3 {
    margin: 20px 0 30px 0;
    padding: 15px;
    border-radius: 12px;
+   cursor: default;
 }
 .scores {                                    /*Scores*/                  
    display: flex;
@@ -203,6 +207,7 @@ h3 {
    width: 100%;
    max-width: 450px;
    justify-content: center;
+   cursor: default;
 }
 
 .streaks{                                    /*common properties for both streaks*/
@@ -410,5 +415,4 @@ h3 {
    .scores .score>span {
       font-size: 18px;
    }
-
 }
