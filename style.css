@@ -1,0 +1,416 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+.root{
+   --bordergrad: linear-gradient(135deg, #00ffff, #00ced1, #1e90ff);
+}
+body {                                          /*Page view property*/
+   display: block;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%), url(./src/images/Background.jpeg);
+   font-family: 'Segoe UI', sans-serif;
+   color: #fff;
+}
+header{                                      /*Properties of header part*/
+   text-align: center;
+   margin: 10px 0 40px 0;
+   background-color: rgba(29, 29, 29, 0.9);
+}
+header>h1{                                   /*Header text size*/
+   font-size: 60px;
+}
+h1 {
+   font-size: 2.5rem;
+   margin-bottom: 10px;
+   color: #4ecdc4;
+   transition: all 0.5s;
+}
+h1:hover{
+   text-shadow: 2px 0 5px #4ecdc4;
+}
+h3 {
+   font-size: 1rem;
+   color: #888;
+   margin-bottom: 12px;
+   border-bottom: 1px solid #333;
+   padding-bottom: 5px;
+}
+.Main-Container {                            /*Properties of main contents*/
+   display: flex;
+   flex-wrap: wrap;
+   gap: 30px;
+   padding: 20px;
+   height: 100vh;
+   align-items: center;
+   justify-content: center;                  /*Contents will be aligned in the middle of the page*/
+}
+
+.Game {                                      /*Properties of left side box where the game is*/
+   background: rgba(255, 255, 255, 0.04);
+   border-radius: 20px;
+   padding: 30px;
+   text-align: center;
+   backdrop-filter: blur(5px);
+   border: 1px solid rgba(128, 128, 128, 0.54);
+   transition: all 0.5s;
+}
+.Game:hover{
+   border: 1px solid rgba(0, 255, 247, 0.867);
+   scale: 1.05;
+}
+.status{                                     /*Tells which player's move*/
+   font-size: 40px;
+   font-weight: 50px;
+   margin-bottom: 30px;
+}  
+.mode-btn {                                  /*Switch for 3x3 to 4x4 grid*/
+   background: transparent;
+   color: #4ecdc4;
+   height: 40px;
+   width: 150px;
+   font-size: 18px;
+   border: 1px solid #4ecdc4;
+   padding: 6px 15px;
+   border-radius: 30px;
+   cursor: pointer;
+   margin: 15px 0;
+
+   transition: all 0.5s;
+}
+
+.mode-btn:hover {
+   background: #4ecdc4;
+   color: #000;
+}
+
+.board {                                     /*Properties of main game board*/
+   display: grid;
+   gap: 8px;
+   margin: 0 auto 20px;
+   transition: 0.3s;
+}
+
+.cell {
+   width: 90px;
+   height: 90px;
+   background: rgba(200, 200, 200, 0.048);
+   border: 1px solid rgba(255, 255, 255, 0.11);
+   border-radius: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 2.5rem;
+   cursor: pointer;
+   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s, border-color 0.2s;
+   position: relative;
+}
+
+.cell:hover:not(.disabled) {                 /*When mouse hovered over cells*/
+   transform: scale(1.1);
+   background: rgba(255, 255, 255, 0.12);
+   border-color: #00fff7;
+   box-shadow: 0 5px 15px rgba(0, 255, 247, 0.2);
+}
+
+.cell.x {                                    /*When a cell is selected by player X*/
+   color: #cdcd4e;
+}
+
+.cell.o {                                    /*When a cell is selected by player X*/
+   color: #ff6b6b;
+}
+.scoreboard{                                 /*Properties of scoreboard below the gameboard*/
+   display: flex;
+   flex-direction: column;
+   background: #4ecdc510;
+   border: 1px solid rgba(128, 128, 128, 0.54);
+   margin: 20px 0 30px 0;
+   padding: 15px;
+   border-radius: 12px;
+}
+.scores {                                    /*Scores*/                  
+   display: flex;
+   justify-content: space-around;
+   padding: 0 15px;
+
+}
+
+.score .value {                              /*Score digits*/
+   display: block;
+   font-size: 1.5rem;
+
+}
+
+.score>span {                                /*Score Heads*/
+   font-size: 25px;
+   font-weight: 25px;
+   margin-top: 10px;
+}
+
+.buttons button {                            /*Properties of all buttons*/
+   padding: 10px 12px;
+   border-radius: 8px;
+   cursor: pointer;
+   font-weight: 600;
+   margin: 3px;
+   color: #fff;
+}
+
+.restart {                                   /*properties of restart button*/
+   background: #4ecdc425;
+   border: 1px solid #4ecdc4;
+   transition: all 0.5s;
+}
+
+.restart:hover {
+   background: #4ecdc4;
+   color: black;
+   border: none;
+   scale: 1.05;
+}
+
+.reset-stats {                               /*properties of stats reset button*/
+   background: #ff9f4325;
+   border: 1px solid #ff9f43;
+   transition: all 0.5s;
+}
+
+.reset-stats:hover {
+   background: #ff9f43;
+   color: black;
+   border: none;
+   scale: 1.05;
+}
+
+.hard-reset {                                /*properties of hard reset button*/
+   background: #ff6b6b25;
+   border: 1px solid #ff6b6b;
+   transition: all 0.5s;
+}
+
+.hard-reset:hover {
+   background: #ff6b6b;
+   color: black;
+   border: none;
+   scale: 1.05;
+}
+.Side-Box {                                  /*Contents other than main game box*/
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   width: 100%;
+   max-width: 450px;
+   justify-content: center;
+}
+
+.streaks{                                    /*common properties for both streaks*/
+   display: flex;
+   justify-content: space-around;
+   width: 100%;
+   
+}
+.Stats-Panel-Inner {                         /*Daily streaks of 3x3 and 4x4 grid*/
+   background: rgba(200, 200, 200, 0.079);
+   padding: 15px;
+   border-radius: 15px;
+   margin: 0 10px 0 10px;
+   border: 1px solid rgba(255, 255, 255, 0.15);
+   width: 200px;
+   backdrop-filter: blur(6px);
+   transition: all 0.5s;
+}
+.Stats-Panel-Inner:hover{
+   border: 1px solid rgba(0, 255, 247, 0.867);   
+   scale: 1.05;
+}
+.Stats-Panel-Inner>h3 {                      /*Header part of streaks*/
+   color: white;
+   font-size: 15px;
+   margin-bottom: 20px;
+}
+.Stats-Panel-Outer {                         /*Winning statistics box*/
+   background: rgba(200, 200, 200, 0.079);
+   padding: 15px;
+   border-radius: 15px;
+   margin: 0 10px 0 10px;
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(6px);
+   justify-content: center;
+   transition: all 0.5s;
+   height: auto;
+   min-height: 430px;
+   width: auto;
+}
+.Stats-Panel-Outer:hover{
+   border: 1px solid rgba(0, 255, 247, 0.867);
+   scale: 1.05;
+}
+.Stats-Panel-Outer>h3 {                       /*Header text of statistics box*/
+   color: white;  
+   font-size: 20px;
+   margin-bottom: 20px;
+}
+.cell.win {                                  /*Properties of cells which will change on winning*/
+   background: rgba(78, 204, 163, 0.2);
+   border-color: #4ecca3;
+   animation: p 0.5s infinite alternate;
+}
+
+@keyframes p {
+   to {
+      transform: scale(1.05);
+   }
+}
+
+.streak-reset {                              /*Properties of streak reset button*/
+   background: #ff6b6b25;
+   backdrop-filter: blur(6px);   
+   width: 90%;
+   height: 40px;
+   margin-left: 5%;
+   border: 1px solid #ff6b6b;
+   color: white;
+   border-radius: 10px;
+   margin-top: 10px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: all 0.5s;
+}
+.streak-reset:hover{
+   color: black;
+   background-color: #ff0000;
+   border: none;
+   scale: 1.05;
+}
+
+.streak-item {                                  /*States how many matches win out of 5*/
+   margin: 12px 0;
+   font-size: 0.85rem;
+}
+
+.streak-item span {
+   display: block;
+   margin-bottom: 4px;
+}
+
+.p-bar {
+   width: 100%;
+   height: 6px;
+   background: #222;
+   border-radius: 3px;
+   overflow: hidden;
+}
+
+.fill {
+   height: 100%;
+   width: 0%;
+   transition: width 0.5s ease;
+}
+
+.x-fill {
+   background: linear-gradient(to right, #818100, #cccc6b);;
+}
+
+.o-fill {
+   background: linear-gradient(to right, #8b0000, #ff6b6b);;
+}
+
+.chart-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 330px;
+   margin-top: 20px;
+   background: rgba(19, 19, 19, 0.442);
+   padding: 10px;
+   border-radius: 10px;
+}
+
+.bar-wrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 45%;
+   height: 100%;
+   justify-content: flex-end;
+}
+
+.bar {
+   width: 65%;
+   border-radius: 5px 5px 0 0;
+   transition: height 0.7s ease-out;
+   position: relative;
+   min-height: 10px;
+}
+
+.x-bar {
+   background: linear-gradient(to top, #818100, #cccc6b);
+}
+
+.o-bar {
+   background: linear-gradient(to top, #8b0000, #ff6b6b);
+}
+
+.bar-val {
+   position: absolute;
+   top: -25px;
+   font-weight: bold;
+   font-size: 0.9rem;
+}
+
+.bar-label {
+   margin-top: 8px;
+   font-size: 15px;
+   color: #bcbcbc;
+}
+
+@media (max-width: 768px) {
+   header>h1 {
+      font-size: 40px;
+   }
+
+   .status {
+      font-size: 28px;
+   }
+
+   .cell {
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
+   }
+
+   .streaks {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .Stats-Panel-Inner {
+      width: 100%;
+      margin: 5px 0;
+   }
+
+   .chart-container {
+      height: 250px;
+   }
+}
+
+@media (max-width: 400px) {
+   .cell {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+   }
+
+   .Game {
+      padding: 10px;
+   }
+
+   .scores .score>span {
+      font-size: 18px;
+   }
+}

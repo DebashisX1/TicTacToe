@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tic Tac Toe </title>
+   <link rel="icon" type="image" href="./src/icon/TTT.png">
+   <link rel="stylesheet" href="style.css">
+   <link rel="icon" type="image" href="./src/images/TTT.png">
+   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<header>
+   <h1>TicTacToe</h1>
+</header>
+<body>
+   <div class="Main-Container">
+      <div class="Game">
+         <h1>Play</h1>
+
+         <div class="mode-selector">
+            <button id="mode-toggle" class="mode-btn">Switch to 4x4</button>
+         </div>
+
+         <div class="status" id="status"> Player X's Turn</div>
+
+         <div class="board-container">
+            <div class="board" id="board"></div>
+         </div>
+
+         <div class="scoreboard">
+            <div>
+               <h3 class="scoreheader" style="font-size: 20px; margin-bottom: 10px; color: white;">SCORE BOARD</h4>
+            </div>
+            <div class="scores">
+               <div class="score">
+                  <span class="scoreX" style="color: #cdcd4e;">X</span>
+                  <span class="value" id="score-X">0</span>
+               </div>
+               <div class="score">
+                  <span class="draw" style="color: rgb(0, 255, 89);">Draw</span>
+                  <span class="value" id="draw">0</span>
+               </div>
+               <div class="score">
+                  <span class="scoreO" style="color: #ff2828;">O</span>
+                  <span class="value" id="score-O">0</span>
+               </div>
+            </div>
+         </div>
+
+         <div class="buttons">
+            <button class="restart" id="restart">Restart Game</button>
+            <button class="reset-stats" id="reset-stats">Reset Stats</button>
+            <button class="hard-reset" id="hard-reset">Hard Reset</button>
+         </div>
+      </div>
+
+      <div class="Side-Box">
+         <div class="Stats-Panel-Outer">
+            <h3>Winning Stats</h3>
+
+            <div class="chart-container">
+               <div class="bar-wrapper">
+                  <div id="bar-X" class="bar x-bar">
+                     <span class="bar-val" id="high-X">0</span>
+                  </div>
+                  <span class="bar-label">Player X</span>
+               </div>
+               <div class="bar-wrapper">
+                  <div id="bar-O" class="bar o-bar">
+                     <span class="bar-val" id="high-O">0</span>
+                  </div>
+                  <span class="bar-label">Player O</span>
+               </div>
+            </div>
+         </div>
+
+         <div class="streaks">
+            <div class="Stats-Panel-Inner">
+               <h3>3x3 Daily Streak</h3>
+
+               <div class="streak-item">
+                  <span>X: <strong id="s3-X">0</strong>/5</span>
+
+                  <div class="p-bar">
+                     <div id="f3-X" class="fill x-fill"></div>
+                  </div>
+               </div>
+
+               <div class="streak-item">
+                  <span>O: <strong id="s3-O">0</strong>/5</span>
+
+                  <div class="p-bar">
+                     <div id="f3-O" class="fill o-fill"></div>
+                  </div>
+               </div>
+            </div>
+         
+            <div class="Stats-Panel-Inner">
+               <h3>4x4 Daily Streak</h3>
+
+               <div class="streak-item">
+                  <span>X: <strong id="s4-X">0</strong>/5</span>
+
+                  <div class="p-bar">
+                     <div id="f4-X" class="fill x-fill"></div>
+                  </div>
+               </div>
+
+               <div class="streak-item">
+                  <span>O: <strong id="s4-O">0</strong>/5</span>
+
+                  <div class="p-bar">
+                     <div id="f4-O" class="fill o-fill"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <button class="streak-reset" id="reset-streak">Reset Streaks</button>
+      </div>
+   </div>
+</div>
+   <script src="script.js"></script>
+</body>
+</html>
