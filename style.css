@@ -30,6 +30,9 @@ h1 {
    color: #4ecdc4;
    transition: all 0.5s;
 }
+h1:hover{
+   text-shadow: 2px 0 5px #4ecdc4;
+}
 h3 {
    font-size: 1rem;
    color: #888;
@@ -410,5 +413,4 @@ h3 {
    .scores .score>span {
       font-size: 18px;
    }
-
 }

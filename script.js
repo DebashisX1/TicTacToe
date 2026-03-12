@@ -76,6 +76,7 @@ function handleCellClick(e) {
       statuselem.textContent = `Player ${currentPlayer} Wins!`;
       statuselem.classList.add('winner');
       scores[currentPlayer]++;
+
       updateHighScores(currentPlayer);
       updateStreakLogic(currentPlayer);
       updateDisplay();
@@ -110,8 +111,10 @@ function updateHighScores(player) {
 
 function updateStreakLogic(player) {
    const modeKey = is4x4 ? 's4' : 's3';
+   let opponent = (player == 'X') ? 'O' : 'X';
    if (streaks[modeKey][player] < 5) {
       streaks[modeKey][player]++;
+      streaks[modeKey][opponent] =0;
       if (streaks[modeKey][player] === 5) {
          triggerCelebration(player, is4x4 ? "4x4" : "3x3");
       }
