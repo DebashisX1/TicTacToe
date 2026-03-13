@@ -26,8 +26,8 @@ let gameActive = true;
 let scores = { X: 0, O: 0, Draw: 0 };
 
 let highScores = {
-   X: 0,
-   O: 0
+   X: parseInt(localStorage.getItem('ttt-high-X')) || 0,
+   O: parseInt(localStorage.getItem('ttt-high-O')) || 0
 };
 
 let streaks = JSON.parse(localStorage.getItem('ttt-4-streaks')) || {
@@ -201,7 +201,7 @@ function restartGame() {
    initGame();
 }
 
-resetstats.addEventListener('click', () => { scores = { X: 0, O: 0, Draw: 0 }; highScores = { X: 0, O: 0 }; updateDisplay(); restartGame(); });
+resetstats.addEventListener('click', () => { scores = { X: 0, O: 0, Draw: 0 }; updateDisplay(); restartGame(); });
 hardResetBtn.addEventListener('click', () => {
    if (confirm("Reset current scores and all-time bests?")) {
       scores = { X: 0, O: 0, Draw: 0 };
