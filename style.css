@@ -11,7 +11,7 @@ body {                                          /*Page view property*/
    display: block;
    justify-content: center;
    align-items: center;
-   min-height: 100vh;
+   max-height: 100vh;
    background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%), url(./src/images/Background.jpeg);
    font-family: 'Segoe UI', sans-serif;
    color: #fff;
@@ -41,23 +41,28 @@ h3 {
 }
 .Main-Container {                            /*Properties of main contents*/
    display: flex;
+   flex-direction: row;
    flex-wrap: wrap;
    gap: 30px;
    padding: 20px;
    height: 100vh;
    align-items: center;
-   justify-content: center;                  /*Contents will be aligned in the middle of the page*/
+   justify-content: center; 
+   transition: all 1s;
 }
 
 .Game {                                      /*Properties of left side box where the game is*/
    background: rgba(255, 255, 255, 0.04);
    border-radius: 20px;
    padding: 30px;
+   width: auto;
    text-align: center;
    backdrop-filter: blur(5px);
    border: 1px solid rgba(128, 128, 128, 0.54);
-   transition: all 0.5s;
+   transition: all 1s;
+   height: auto;
 }
+
 .Game:hover{
    border: 1px solid rgba(0, 255, 247, 0.867);
    scale: 1.05;
@@ -67,6 +72,7 @@ h3 {
    font-weight: 50px;
    margin-bottom: 30px;
    cursor: default;
+   transition: all 0.5s;
 }  
 .mode-btn {                                  /*Switch for 3x3 to 4x4 grid*/
    background: transparent;
@@ -92,7 +98,8 @@ h3 {
    display: grid;
    gap: 8px;
    margin: 0 auto 20px;
-   transition: 0.3s;
+   width: 100%;
+   transition: all 0.5s;
 }
 
 .cell {
@@ -104,6 +111,7 @@ h3 {
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-direction: row;
    font-size: 2.5rem;
    cursor: pointer;
    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s, border-color 0.2s;
@@ -129,10 +137,12 @@ h3 {
    flex-direction: column;
    background: #4ecdc510;
    border: 1px solid rgba(128, 128, 128, 0.54);
-   margin: 20px 0 30px 0;
+   margin: 10px 0 30px 0;
    padding: 15px;
    border-radius: 12px;
+   width: 100%;
    cursor: default;
+   transition: all 0.5s;
 }
 .scores {                                    /*Scores*/                  
    display: flex;
@@ -208,6 +218,7 @@ h3 {
    max-width: 450px;
    justify-content: center;
    cursor: default;
+   transition: all 0.5s;
 }
 
 .streaks{                                    /*common properties for both streaks*/
@@ -371,18 +382,32 @@ h3 {
    color: #bcbcbc;
 }
 
-@media (max-width: 768px) {
-   header>h1 {
-      font-size: 40px;
+@media (max-width: 800px) {
+   .Main-Container{
+      width: 100%;
+      flex-direction: row;
    }
-
+   header>h1 {
+      font-size: auto;
+   }
+   .scoreboard{
+      margin: 20px 0 30px 0;
+   }
+   .buttons button{
+      margin: 20px 3px 30px 3px;
+   }
+   h1 {
+      font-size: 2rem;
+   }
    .status {
       font-size: 28px;
    }
-
+   .Side-Box{
+      width: 400px;
+   }
    .cell {
-      width: 70px;
-      height: 70px;
+      width: 90px;
+      height: 90px;
       font-size: 2rem;
    }
 
@@ -392,27 +417,11 @@ h3 {
    }
 
    .Stats-Panel-Inner {
-      width: 100%;
+      width: 90%;
       margin: 5px 0;
    }
 
    .chart-container {
-      height: 250px;
-   }
-}
-
-@media (max-width: 400px) {
-   .cell {
-      width: 60px;
-      height: 60px;
-      font-size: 1.5rem;
-   }
-
-   .Game {
-      padding: 10px;
-   }
-
-   .scores .score>span {
-      font-size: 18px;
+      height: 350px;
    }
 }

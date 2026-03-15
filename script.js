@@ -49,7 +49,8 @@ function initGame() {
    const size = is4x4 ? 16 : 9;
    board = Array(size).fill('');
    boardelem.style.gridTemplateColumns = `repeat(${is4x4 ? 4 : 3}, 1fr)`;
-   boardelem.style.width = is4x4 ? '400px' : '300px';
+   boardelem.style.maxWidth = is4x4 ? '500px' : '300px';
+   
 
 
    for (let i = 0; i < size; i++) {
@@ -59,7 +60,9 @@ function initGame() {
       cell.addEventListener('click', handleCellClick);
       boardelem.appendChild(cell);
    }
+
    updateDisplay();
+
 }
 
 function handleCellClick(e) {
